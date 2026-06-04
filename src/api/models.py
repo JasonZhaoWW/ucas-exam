@@ -15,6 +15,33 @@ class KnowledgeBase(BaseModel):
     updated_at: datetime = Field(default_factory=_utcnow)
 
 
+class KnowledgeBaseCreate(BaseModel):
+    name: str
+    description: str = ""
+
+
+class KnowledgeBaseResponse(BaseModel):
+    id: str
+    name: str
+    description: str
+    created_at: datetime
+    updated_at: datetime
+
+
+class KnowledgeBaseList(BaseModel):
+    items: list[KnowledgeBaseResponse]
+    total: int
+
+
+class KnowledgeBaseDetail(KnowledgeBaseResponse):
+    document_count: int
+
+
+class KnowledgeBaseUpdate(BaseModel):
+    name: str
+    description: str = ""
+
+
 class Document(BaseModel):
     id: str
     kb_id: str
