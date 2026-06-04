@@ -59,3 +59,16 @@ class DocumentResponse(BaseModel):
 class DocumentList(BaseModel):
     items: list[DocumentResponse]
     total: int
+
+
+class SearchRequest(BaseModel):
+    query: str = Field(min_length=1)
+    top_k: int = 5
+
+
+class SearchResult(BaseModel):
+    chunk_id: str
+    text: str
+    score: float
+    document_id: str
+    filename: str
