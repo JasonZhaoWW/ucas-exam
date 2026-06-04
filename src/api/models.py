@@ -47,3 +47,15 @@ class Document(BaseModel):
     kb_id: str
     filename: str
     created_at: datetime = Field(default_factory=_utcnow)
+
+
+class DocumentResponse(BaseModel):
+    id: str
+    kb_id: str
+    filename: str
+    created_at: datetime
+
+
+class DocumentList(BaseModel):
+    items: list[DocumentResponse]
+    total: int
